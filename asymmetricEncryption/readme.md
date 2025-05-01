@@ -4,6 +4,7 @@ We will be using Asymmetric Encryption to "securely" transfer the information fo
 The way this type of encryption works is that we generate 2 keys, one that is public that we use to encrypt and one that is private to decrypt. The message can *only* be decrypted by the private key, this is what makes it secure. You can get more information about this idea in [this video](https://www.youtube.com/watch?v=GSIDS_lvRv4).
 
 In our example, we will generate some keys, and then encrypt and then decrypt a message. For your assignment, you should modify this to encrypt your card number, CVC and money amount, then decrypt on the "bank" end.
+![Bank of Bear diagram](https://github.com/MicahChubb/RaspberryPiExamples/blob/main/asymmetricEncryption/bank.drawio.png?raw=true)
 
 You will need:
 
