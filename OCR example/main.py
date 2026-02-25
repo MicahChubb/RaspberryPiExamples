@@ -14,6 +14,7 @@ def execution_path(filename):
 
 filename = execution_path("1_python-ocr.jpg")
 img = np.array(Image.open(filename))
+cv2.imshow('image', img)
 text = pytesseract.image_to_string(img)
 
 print(text)
