@@ -12,7 +12,7 @@ import numpy as np;
 def execution_path(filename):
   return os.path.join(os.path.dirname(inspect.getfile(sys._getframe(1))), filename)			
 
-image = cv2.imread(execution_path("3_python-ocr.jpg"))
+image = cv2.imread(execution_path("sampleText.jpg"))
 
 # Resize
 #image = cv2.resize(image, (320, 120))
@@ -27,10 +27,10 @@ _, image = cv2.threshold(image, 70, 255, cv2.THRESH_BINARY)
 image = cv2.Canny(image, 30,200)
 
 # Countours (needs canny)
-contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-print("Number of Contours Found = " + str(len(contours)))
-image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-cv2.drawContours(image, contours, -1, (255,0,0),2) #
+#contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+#print("Number of Contours Found = " + str(len(contours)))
+#image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+#cv2.drawContours(image, contours, -1, (255,0,0),2) #
 
 
 cv2.imshow('image', image)
