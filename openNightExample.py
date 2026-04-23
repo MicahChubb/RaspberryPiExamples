@@ -2,6 +2,9 @@ import cv2
 import os, sys, inspect #For dynamic filepaths
 
 cam = cv2.VideoCapture(0)
+cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+cam.set(cv2.CAP_PROP_FPS, 30)
 
 # Pretrained classes in the model - Dictionary
 classNames = {0: 'background',
@@ -33,14 +36,19 @@ def execution_path(filename):
   return os.path.join(os.path.dirname(inspect.getfile(sys._getframe(1))), filename)			
 
   # Loading model
-model = cv2.dnn.readNetFromTensorflow(execution_path('models/frozen_inference_graph.pb'),
-                                      execution_path('models/ssd_mobilenet_v2_coco_2018_03_29.pbtxt'))
+model = cv2.dnn.readNetFromTensorflow(execution_path('ExploreOpencvDnn/models/frozen_inference_graph.pb'),
+                                      execution_path('ExploreOpencvDnn/models/ssd_mobilenet_v2_coco_2018_03_29.pbtxt'))
 #image = cv2.imread(execution_path("image.jpeg"))
 
 while True:
     check, frame = cam.read()
-    image = cv2.resize(frame, (0,0), fx = 0.8, fy = 0.8)    
+    if check == False:
+        break
+
+    image = cv2.flip(frame,0)#cv2.resize(frame, (1920,1080))#cv2.resize(frame, (0,0), fx = 0.8, fy = 0.8)    
     image_height, image_width, _ = image.shape
+
+    
 
     #Sets our input as the image, turns it into a blob
     #Resizes and sets the colour mode to BGR
